@@ -16,13 +16,15 @@ function App() {
       <Routes>
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/chatrooms" element={<>
-          <CreateChatRoomForm onRoomCreated={(room) => console.log("Salle créée", room)} />
-          <ChatRoomsList />
-        </>} />
+        <Route path="/chatrooms" element={<ChatRoomsList />} />
+        <Route path="/chatroom/:id" element={<ChatRoomLiveWrapper />} />
       </Routes>
     </Router>
   );
 }
 
+function ChatRoomLiveWrapper() {
+    const { id } = useParams();
+    return <ChatRoomLive roomId={id} />;
+}
 export default App;
