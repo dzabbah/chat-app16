@@ -15,6 +15,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Route auth
+const authRoutes = require("./routes/auth");
+app.use("/api/auth", authRoutes);
+
+// Routh Messages
+const messageRoutes = require("./routes/messageRoutes");
+app.use("/api/messages", messageRoutes);
+
 // Importer les routes
 const userRoutes = require("./routes/userRoutes");
 const messageRoutes = require("./routes/messageRoutes");
